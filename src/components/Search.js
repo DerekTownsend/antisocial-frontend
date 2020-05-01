@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Api from '../services/api';
 import {connect} from 'react-redux'
 // import Search from './Search'
-import { fetchMovies, setPageMax, setPage } from '../actions'
+import { fetchPosts, setPageMax, setPage } from '../actions'
 import { withRouter } from "react-router";
 
 
@@ -17,7 +17,7 @@ class Search extends Component {
         [e.target.name]: character
       })
     }else{
-      alert("Please no '/'  or '%'")
+      alert("Please no '/'  or '%' characters")
     }
   }
   handleSubmit = (e)=>{
@@ -29,7 +29,7 @@ class Search extends Component {
       // console.log(this.props);
       Api.searchMovies({term: this.state.term, page: this.props.page})
       .then( movies => {
-        this.props.fetchMovies(movies.movies)
+        this.props.fetchPosts(movies.movies)
         this.props.setPageMax(Math.ceil(movies.total/24))
         this.props.history.push(`/movies/search/${this.state.term}/1`)
       })
@@ -39,7 +39,7 @@ class Search extends Component {
   render(){
     return (
       <form onSubmit={this.handleSubmit} className="search">
-        <input onChange={this.handleChange} name="term" value={this.state.term} placeholder="Search by Movie Title" id="search_input"/>
+        <input onChange={this.handleChange} name="term" value={this.state.term} placeholder="Search for Post Titles" id="search_input"/>
         <button type="submit"><i className="fas fa-search"></i></button>
       </form>
     )
@@ -53,8 +53,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchMovies: (movies) => {
-      dispatch(fetchMovies(movies))
+    fetchPosts: (movies) => {
+      dispatch(fetchPosts(movies))
     },
     setPageMax: (pageNumber) => {
       dispatch(setPageMax(pageNumber))

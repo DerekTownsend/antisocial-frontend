@@ -1,12 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 body{
   margin: 0;
   width: 100%;
   min-height: 100vh;
-  /* background-color: #fff200;
+  /* background-color: #FF6978;
 background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
   background-color: red; */
-  background-color: blue;
-  background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
+  background-color: #071013;
+  /* background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png"); */
+}
+h1,
+h2,
+h3,
+h4,{
+  font-family: 'Righteous', cursive;
+
 }
 
 h1,
@@ -16,7 +25,7 @@ h4,
 p,
 li,
 label {
-  color: #fff200;
+  color: #FF6978;
 }
 
 .container {
@@ -29,23 +38,23 @@ label {
   position: fixed;
   top:0;
   left: 0;
-  /* background-color: #fff200;
+  /* background-color: #FF6978;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
   background-color: red; */
-  background-color: blue;
-  background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
+  background-color: #071013;
+  /* background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png"); */
   z-index: 2;
   min-height: 9em;
   padding: .5em;
-  border-bottom: .1em solid #fff200;
+  border-bottom: .1em solid #FF6978;
 }
 
-.movies {
+.posts {
   /* width: 90%;
   margin: 0 auto; */
   padding: 1em;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 100%;
   place-items: center;
   place-content: space-around;
   /* background-color: red; */
@@ -53,28 +62,28 @@ label {
   border-radius: 1em;
 }
 
-.movie {
+.post {
   box-sizing: border-box;
   width: 95%;
   height: 95%;
   display: inline;
   padding: .5em;
   margin: .75em;
-  border: .1em solid #fff200;
+  border: .1em solid #FF6978;
   border-radius: .5em;
-  /* background: #fff200; */
+  /* background: #FF6978; */
   position: relative;
   text-align: center;
 }
  a{
-  color: blue;
+  color: #FF6978;
 }
 .movies a{
-  color: #fff200;
+  color: #FF6978;
   text-decoration: none;
-  border: solid #FFF200 .1em;
+  border: solid #FF6978 .1em;
   border-radius: .5em;
-  color: #FFF200;
+  color: #FF6978;
   padding: .2em;
   display: block;
   width: 50%;
@@ -87,7 +96,7 @@ label {
 
  #active_button{
 
-   border: #fff200 solid .1em;
+   border: #FF6978 solid .1em;
  }
 
 .page_buttons{
@@ -102,7 +111,7 @@ label {
    /* background-color: red; */
    border: black solid .06em;
    background: none;
-   color: #fff200;
+   color: #FF6978;
  }
 
 form input{
@@ -146,14 +155,14 @@ form input{
 }
 
 .navbar a{
-  color: #fff200;
+  color: #FF6978;
   text-decoration: none;
 }
 
 .navbar a,
 .navbar div button{
   font-size: 1.2em;
-  color: #fff200;
+  color: #FF6978;
   background: none;
   border: none;
 }
@@ -168,7 +177,7 @@ form input{
 .navbar h1{
   display: inline-block;
   margin-left: 1em;
-  text-shadow: -.03em -.03em 0 #000, .03em -.03em 0 #000, -.03em .03em 0 #000, .03em .03em 0 #000;
+  /* text-shadow: -.03em -.03em 0 #000, .03em -.03em 0 #000, -.03em .03em 0 #000, .03em .03em 0 #000; */
 }
 .navbar form button{
   color: black;
@@ -198,23 +207,23 @@ form input{
   border-bottom: grey .1em solid;
 }
 .profile .profile_page{
-  border:  solid #FFF200 .1em;
+  border:  solid #FF6978 .1em;
   margin-top: .5em;
   padding: 2em;
   height: 100%;
 }
 .profile .profile_nav{
   /* margin-right: .5em; */
-  border-top: solid #FFF200 .1em;
-  border-left: solid #FFF200 .1em;
-  border-right: solid #FFF200 .1em;
+  border-top: solid #FF6978 .1em;
+  border-left: solid #FF6978 .1em;
+  border-right: solid #FF6978 .1em;
   text-decoration: none;
   padding: .5em;
   margin-bottom: .5em;
   color: yellow;
 }
 .profile .active_profile{
-  background-color: #FFF200;
+  background-color: #FF6978;
   color: red;
 }
 
@@ -249,9 +258,9 @@ form input{
     top: .2em;
     right: 1em;
     background: none;
-    border: solid #FFF200 .1em;
+    border: solid #FF6978 .1em;
     border-radius: .5em;
-    color: #FFF200;
+    color: #FF6978;
   }
 
   .search{

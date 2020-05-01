@@ -2,8 +2,8 @@ const API_LINK = "http://localhost:3000/"
 // const API_LINK = "https://prmovies-backend.herokuapp.com/"
 export default {
 
-  fetchMovies: (pageNumber) => {
-    return fetch(`${API_LINK}movies?page=${pageNumber}`)
+  fetchPosts: (pageNumber) => {
+    return fetch(`${API_LINK}posts?page=${pageNumber}`)
     .then(resp => resp.json())
   },
   fetchMovie: (id) => {
@@ -64,7 +64,8 @@ export default {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
       },
       body: JSON.stringify(bodyObj)
     }
@@ -76,18 +77,107 @@ export default {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+
       },
       body: JSON.stringify(bodyObj)
     }
-    return fetch(`${API_LINK}likes`, reqObj)
+    return fetch(`${API_LINK}comment_likes`, reqObj)
       .then(resp => resp.json())
   },
   unlikeComment: (id) =>{
     const reqObj = {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
     }
-    return fetch(`${API_LINK}likes/${id}`, reqObj)
+    return fetch(`${API_LINK}comment_likes/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
+  dislikeComment: (bodyObj) =>{
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}comment_dislikes`, reqObj)
+      .then(resp => resp.json())
+  },
+  undislikeComment: (id) =>{
+    const reqObj = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
+    }
+    return fetch(`${API_LINK}comment_dislikes/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
+  createPost: (bodyObj) =>{
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}posts`, reqObj)
+      .then(resp => resp.json())
+  },
+  likePost: (bodyObj) =>{
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}post_likes`, reqObj)
+      .then(resp => resp.json())
+  },
+  unlikePost: (id) =>{
+    const reqObj = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
+    }
+    return fetch(`${API_LINK}post_likes/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
+  dislikePost: (bodyObj) =>{
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}post_dislikes`, reqObj)
+      .then(resp => resp.json())
+  },
+  undislikePost: (id) =>{
+    const reqObj = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
+    }
+    return fetch(`${API_LINK}post_dislikes/${id}`, reqObj)
       .then(resp => resp.json())
   },
   favoriteMovie: (bodyObj) =>{
@@ -95,7 +185,8 @@ export default {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
       },
       body: JSON.stringify(bodyObj)
     }
@@ -104,7 +195,10 @@ export default {
   },
   unfavoriteMovie: (id) =>{
     const reqObj = {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
     }
     return fetch(`${API_LINK}favorites/${id}`, reqObj)
       .then(resp => resp.json())
@@ -114,7 +208,9 @@ export default {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+
       },
       body: JSON.stringify(bodyObj)
     }
@@ -123,7 +219,10 @@ export default {
   },
   deleteComment: (id) =>{
     const reqObj = {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
     }
     return fetch(`${API_LINK}comments/${id}`, reqObj)
       .then(resp => resp.json())
@@ -133,7 +232,9 @@ export default {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+
       },
       body: JSON.stringify(bodyObj)
     }
@@ -145,7 +246,9 @@ export default {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+
       },
       body: JSON.stringify(bodyObj)
     }

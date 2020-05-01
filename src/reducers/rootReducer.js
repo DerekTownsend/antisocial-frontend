@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 // import { createStore, applyMiddleware, compose } from 'redux';
 import { createStore } from 'redux';
-import moviesReducer from './moviesReducer';
+import postsReducer from './postsReducer';
 import usersReducer from './usersReducer';
 import pagesReducer from './pagesReducer';
 import maxPagesReducer from './maxPagesReducer';
@@ -13,7 +13,7 @@ import ratingsReducer from './ratingsReducer';
 
 
 const rootReducer = combineReducers({
-  movies: moviesReducer,
+  posts: postsReducer,
   user: usersReducer,
   page: pagesReducer,
   maxPages: maxPagesReducer,

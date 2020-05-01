@@ -1,9 +1,57 @@
-import {FETCH_MOVIES, SET_PAGE, DECREMENT_PAGE, INCREMENT_PAGE, SET_PAGE_MAX, FIRST_PAGE, LAST_PAGE, SHOW_MOVIE, FETCH_USER, LOGOUT_USER, FETCH_COMMENTS, ADD_COMMENT, LIKE, UNLIKE, EDIT_COMMENT, DELETE_COMMENT, FETCH_RATINGS} from './types'
+import {FETCH_POSTS, ADD_POST, EDIT_POST, DELETE_POST, LIKE_POST, UNLIKE_POST, DISLIKE_POST, UNDISLIKE_POST, SET_PAGE, DECREMENT_PAGE, INCREMENT_PAGE, SET_PAGE_MAX, FIRST_PAGE, LAST_PAGE, SHOW_MOVIE, FETCH_USER, LOGOUT_USER, FETCH_COMMENTS, ADD_COMMENT, LIKE, UNLIKE, EDIT_COMMENT, DELETE_COMMENT, FETCH_RATINGS} from './types'
 
-export function fetchMovies(movies) {
+export function fetchPosts(posts) {
   return {
-    type: FETCH_MOVIES,
-    movies
+    type: FETCH_POSTS,
+    posts
+  }
+}
+export function addPost(comment) {
+  return {
+    type: ADD_POST,
+    comment
+  }
+}
+
+export function likePost(post) {
+  return {
+    type: LIKE_POST,
+    post
+  }
+}
+
+export function unlikePost(post) {
+  return {
+    type: UNLIKE_POST,
+    post
+  }
+}
+
+export function dislikePost(post) {
+  return {
+    type: DISLIKE_POST,
+    post
+  }
+}
+
+export function undislikePost(post) {
+  return {
+    type: UNDISLIKE_POST,
+    post
+  }
+}
+
+export function editPost(post) {
+  return {
+    type: EDIT_POST,
+    post
+  }
+}
+
+export function deletePost(id) {
+  return {
+    type: DELETE_POST,
+    id
   }
 }
 

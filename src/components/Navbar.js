@@ -4,7 +4,7 @@ import Search from './Search'
 import {connect} from 'react-redux'
 import { logoutUser} from '../actions'
 import { withRouter } from "react-router";
-import Logo from '../images/logo_prm.png';
+import Logo from '../images/logo_antisocial.png';
 
 class Navbar extends Component {
   state = {
@@ -22,7 +22,7 @@ class Navbar extends Component {
   handleLogout = () =>{
     localStorage.removeItem("user")
     this.props.logoutUser()
-    this.props.history.push("/movies/all")
+    this.props.history.push("/")
   }
 
   displayLogOutOption = () =>{
@@ -40,10 +40,10 @@ class Navbar extends Component {
     return (
       <div className="navbar">
       <img src={Logo} alt="logo"/>
-        <h1>People's Republic of Movies</h1><br/>
+        <h1>Antiscoial</h1><br/>
         <div className={this.state.showNav ? "main" : "main responsive"}>
           <Search />
-          <Link to="/movies/all">All Movies</Link>
+          <Link to="/trending">Trending</Link>
           {localStorage.getItem("user") ? this.displayLogOutOption() : this.displayLoginOptions()}
         </div>
         <button className="mobile_buttton"onClick={this.displayNav}>&#9776;</button>

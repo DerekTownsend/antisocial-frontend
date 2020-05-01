@@ -26,7 +26,7 @@ class Login extends Component {
       if (!user['error']) {
         this.props.fetchUser(user.user)
         localStorage.setItem('user', user.jwt)
-        this.props.history.push("/movies/all")
+        this.props.history.push("/")
       }else{
         alert(user.error);
       }
@@ -38,7 +38,7 @@ class Login extends Component {
   render(){
     return (
       <div className="login_div">
-      {localStorage.getItem("user") ? <Redirect to="/movies/all"/> : null}
+      {localStorage.getItem("user") ? <Redirect to="/"/> : null}
         <h2>Login</h2>
         <form className="login" onSubmit={this.handleSubmit}>
           <label htmlFor="username">Username</label>
