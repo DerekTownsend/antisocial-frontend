@@ -204,7 +204,7 @@ export default {
     return fetch(`${API_LINK}posts/${id}`, reqObj)
       .then(resp => resp.json())
   },
-  favoriteMovie: (bodyObj) =>{
+  favoritePost: (bodyObj) =>{
     const reqObj = {
       method: 'POST',
       headers: {
@@ -214,17 +214,17 @@ export default {
       },
       body: JSON.stringify(bodyObj)
     }
-    return fetch(`${API_LINK}favorites`, reqObj)
+    return fetch(`${API_LINK}post_favorites`, reqObj)
       .then(resp => resp.json())
   },
-  unfavoriteMovie: (id) =>{
+  unfavoritePost: (id) =>{
     const reqObj = {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem("user")}`
       },
     }
-    return fetch(`${API_LINK}favorites/${id}`, reqObj)
+    return fetch(`${API_LINK}post_favorites/${id}`, reqObj)
       .then(resp => resp.json())
   },
   editComment: (bodyObj, id) =>{

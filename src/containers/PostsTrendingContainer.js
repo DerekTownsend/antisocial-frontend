@@ -5,7 +5,7 @@ import PageButtons from '../components/PageButtons';
 import {fetchPosts, setPageMax} from '../actions'
 import PostIntermediary from '../components/PostIntermediary';
 
-class PostsContainer extends Component {
+class PostsTrendingContainer extends Component {
 
   fetchPosts = () => {
     Api.fetchPosts(this.props.page)
@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PostsTrendingContainer);
 
 // <button onClick={this.handleClick}>{this.props.page}</button>
 // connect(mapStateToProps, mapDispatchToProps)()

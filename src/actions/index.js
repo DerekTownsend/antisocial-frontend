@@ -1,4 +1,4 @@
-import {FETCH_POSTS, ADD_POST, EDIT_POST, DELETE_POST, LIKE_POST, UNLIKE_POST, DISLIKE_POST, UNDISLIKE_POST, SET_PAGE, DECREMENT_PAGE, INCREMENT_PAGE, SET_PAGE_MAX, FIRST_PAGE, LAST_PAGE, SHOW_MOVIE, FETCH_USER, LOGOUT_USER, FETCH_COMMENTS, ADD_COMMENT, LIKE, UNLIKE, EDIT_COMMENT, DELETE_COMMENT, FETCH_RATINGS} from './types'
+import {FETCH_POSTS, ADD_POST, EDIT_POST, DELETE_POST, LIKE_POST, UNLIKE_POST, DISLIKE_POST, UNDISLIKE_POST, SET_PAGE, DECREMENT_PAGE, INCREMENT_PAGE, SET_PAGE_MAX, FIRST_PAGE, LAST_PAGE, SHOW_MOVIE, FETCH_USER, LOGOUT_USER, FETCH_COMMENTS, ADD_COMMENT, LIKE, UNLIKE, EDIT_COMMENT, DELETE_COMMENT, FETCH_RATINGS, FAVORITE_POST, UNFAVORITE_POST} from './types'
 
 export function fetchPosts(posts) {
   return {
@@ -37,6 +37,18 @@ export function dislikePost(post) {
 export function undislikePost(post) {
   return {
     type: UNDISLIKE_POST,
+    post
+  }
+}
+export function favoritePost(post) {
+  return {
+    type: FAVORITE_POST,
+    post
+  }
+}
+export function unfavoritePost(post) {
+  return {
+    type: UNFAVORITE_POST,
     post
   }
 }
