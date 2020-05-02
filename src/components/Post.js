@@ -3,18 +3,40 @@ import { Link } from 'react-router-dom';
 import Api from '../services/api';
 import {connect} from 'react-redux'
 import { fetchPosts, deletePost, likePost, unlikePost, dislikePost, undislikePost, editPost } from '../actions'
-// import CommentEditForm from './CommentEditForm'
+import PostEditForm from './PostEditForm'
 
 
 // import no_poster from '../no_poster.png';
 // .toFixed(1)
 class Post extends Component {
+  state = {
+    showEditForm: false
+  }
+  updateEditState = ()=>{
+    this.setState({showEditForm: false})
+  }
+  handleClick = (e) =>{
+    if(e.target.className === "edit"){
+      this.setState({showEditForm: true})
+    }else if(e.target.className === "delete"){
+      Api.deletePost(this.props.post.id)
+      .then(message => this.props.deletePost(this.props.post.id))
+    }
+  }
   calculateLikesDislikes= () =>{
     if (this.props.post.post_likes.length > 0 || this.props.post.post_dislikes.length > 0) {
       return this.props.post.post_likes.length - this.props.post.post_dislikes.length
     }else{
       return 0;
     }
+  }
+  showEditDeleteButtons = () =>{
+    return (
+      <div>
+        <button onClick={this.handleClick} className="edit">Edit</button>
+        <button onClick={this.handleClick} className="delete">Delete</button>
+      </div>
+    )
   }
     handleLike = () => {
       const bodyObj = {
@@ -69,22 +91,16 @@ class Post extends Component {
           <h3>{this.props.post.title}</h3>
           <p>{this.props.post.message}</p>
           {this.props.user.id ? this.showLikeButtons() : null}
+          {this.props.post.user.id === this.props.user.id ?  this.showEditDeleteButtons(): null}
 
         </div>
       )
     }
-    //           {this.props.comment.user.id === this.props.user.id ?  this.showEditDeleteButtons(): null}
-
-    // <Link to={`/users/${this.props.post.user.id}`}>{this.props.post.user.username}</Link>
-    // <h3>{this.props.post.title}</h3>
-    // <p>{this.props.post.message}</p>
-    // <p>{this.calculateLikesDislikes() }</p>
-    // <Link to={`/posts/${this.props.post.id}`}>See Comments</Link>
-
   render(){
     return (
       <div className="post">
-      {this.showPost()}
+      {this.state.showEditForm ? <PostEditForm post={this.props.post} updateEditState={this.updateEditState}/> : this.showPost()}
+
       </div>
     )
   }

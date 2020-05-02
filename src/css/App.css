@@ -194,6 +194,23 @@ form input{
   margin: 1em 0;
   border-top: solid .2em black;
 }
+.create_post,
+.create_comment{
+  border: .1em solid #FF6978;
+  border-radius: .5em;
+}
+.create_post input[type=submit],
+.create_comment input[type=submit]{
+  margin: .5em auto;
+  border: .1em solid #FF6978;
+  color: #FF6978;
+  background: none;
+  font-size: 1em;
+  border-radius: .5em;
+  padding: .5em;
+}
+.create_post input#title,
+.create_post textarea,
 .create_comment input#title,
 .create_comment textarea{
     min-width: 100%;
@@ -202,9 +219,15 @@ form input{
     padding: .2em;
     box-sizing: border-box;
     border: none;
+    background-color: #071013;
+    color: #FF6978;
+    max-height: 6em;
 }
-.create_comment input#title {
-  border-bottom: grey .1em solid;
+.create_post input#title,
+.create_comment input#title,
+.create_post textarea,
+.create_comment textarea {
+  border-bottom: #FF6978 .1em solid;
 }
 .profile .profile_page{
   border:  solid #FF6978 .1em;

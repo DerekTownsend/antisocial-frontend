@@ -6,10 +6,10 @@ export function fetchPosts(posts) {
     posts
   }
 }
-export function addPost(comment) {
+export function addPost(post) {
   return {
     type: ADD_POST,
-    comment
+    post
   }
 }
 

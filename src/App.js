@@ -4,6 +4,7 @@ import './css/Form.css';
 import { Route, Switch } from 'react-router-dom';
 import {connect} from 'react-redux'
 import PostsContainer from './containers/PostsContainer'
+import PostForm from './components/PostForm'
 // import MovieShowContainer from './containers/MovieShowContainer'
 // import MovieSearchContainer from './containers/MovieSearchContainer'
 import Login from './components/Login'
@@ -28,6 +29,7 @@ class App extends Component {
       <div className="container">
       {localStorage.getItem("user") ? this.getUser() : this.props.fetchUser({})}
       <Navbar />
+      <PostForm/>
       <Switch>
         <Route exact path='/' component={PostsContainer}/>
         <Route exact path='/login' component={Login}/>

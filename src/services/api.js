@@ -3,7 +3,7 @@ const API_LINK = "http://localhost:3000/"
 export default {
 
   fetchPosts: (pageNumber) => {
-    return fetch(`${API_LINK}posts?page=${pageNumber}`)
+    return fetch(`${API_LINK}trending?page=${pageNumber}`)
     .then(resp => resp.json())
   },
   fetchMovie: (id) => {
@@ -178,6 +178,30 @@ export default {
       },
     }
     return fetch(`${API_LINK}post_dislikes/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
+  editPost: (bodyObj, id) =>{
+    const reqObj = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}posts/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
+  deletePost: (id) =>{
+    const reqObj = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
+    }
+    return fetch(`${API_LINK}posts/${id}`, reqObj)
       .then(resp => resp.json())
   },
   favoriteMovie: (bodyObj) =>{
