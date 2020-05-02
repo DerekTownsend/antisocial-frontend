@@ -57,8 +57,8 @@ label[for=password]{
     grid-area: submit;
     place-self: center;
     background: none;
-    color: #fff200;
-    border: #fff200 solid .1em;
+    color: #FF6978;
+    border: #FF6978 solid .1em;
 }
 .register p,
 .login p{

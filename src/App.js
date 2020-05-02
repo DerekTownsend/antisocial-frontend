@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 import './css/Form.css';
 import { Route, Switch } from 'react-router-dom';
 import {connect} from 'react-redux'
-// import MoviesContainer from './containers/MoviesContainer'
+import PostsContainer from './containers/PostsContainer'
+import PostForm from './components/PostForm'
 // import MovieShowContainer from './containers/MovieShowContainer'
 // import MovieSearchContainer from './containers/MovieSearchContainer'
 import Login from './components/Login'
 import Register from './components/Register'
-// import Navbar from './components/Navbar'
+import Navbar from './components/Navbar'
 // ===========================================
 // import ProfileContainer from './containers/ProfileContainer'
 import Api from './services/api';
@@ -28,9 +28,13 @@ class App extends Component {
     return (
       <div className="container">
       {localStorage.getItem("user") ? this.getUser() : this.props.fetchUser({})}
+      <Navbar />
+      <PostForm/>
       <Switch>
+        <Route exact path='/' component={PostsContainer}/>
         <Route exact path='/login' component={Login}/>
         <Route exact path='/register' component={Register}/>
+        <Route exact path='/movies/all' component={PostsContainer}/>
       </Switch>
       </div>
     )

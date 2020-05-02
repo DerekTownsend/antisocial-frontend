@@ -2,24 +2,24 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Api from '../services/api';
 import PageButtons from '../components/PageButtons';
-import {fetchMovies, setPageMax} from '../actions'
-import MoviesIntermediary from '../components/MoviesIntermediary';
+import {fetchPosts, setPageMax} from '../actions'
+import PostIntermediary from '../components/PostIntermediary';
 
-class MoviesContainer extends Component {
+class PostsContainer extends Component {
 
-  fetchMovies = () => {
-    Api.fetchMovies(this.props.page)
-    .then(movies => {
-      this.props.setPageMax(Math.ceil(movies.total/24))
-      this.props.fetchMovies(movies.movies)
+  fetchPosts = () => {
+    Api.fetchPosts(this.props.page)
+    .then(posts => {
+      this.props.setPageMax(Math.ceil(posts.total/24))
+      this.props.fetchPosts(posts.posts)
     })
   }
   render(){
     return (
       <div>
-        {this.fetchMovies()}
+        {this.fetchPosts()}
         <PageButtons/>
-        <MoviesIntermediary/>
+        <PostIntermediary/>
         <PageButtons/>
       </div>
     )
@@ -34,8 +34,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchMovies: (movies) => {
-      dispatch(fetchMovies(movies))
+    fetchPosts: (posts) => {
+      dispatch(fetchPosts(posts))
     },
     setPageMax: (pageNumber) => {
       dispatch(setPageMax(pageNumber))
@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);
 
 // <button onClick={this.handleClick}>{this.props.page}</button>
 // connect(mapStateToProps, mapDispatchToProps)()

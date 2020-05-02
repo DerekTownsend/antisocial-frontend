@@ -28,7 +28,7 @@ class Register extends Component {
       if (!user['error']) {
         this.props.fetchUser(user.user)
         localStorage.setItem('user', user.jwt)
-        this.props.history.push("/movies/all")
+        this.props.history.push("/")
       }else{
         alert(user.error);
       }
@@ -40,7 +40,7 @@ class Register extends Component {
   render(){
     return (
       <div className="register_div">
-        {localStorage.getItem("user") ? <Redirect to="/movies/all"/> : null}
+        {localStorage.getItem("user") ? <Redirect to="/"/> : null}
         <h2>Register</h2>
         <form onSubmit={this.handleSubmit} className="register">
           <label htmlFor="username">Username</label>
