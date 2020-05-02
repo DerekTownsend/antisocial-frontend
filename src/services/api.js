@@ -10,7 +10,7 @@ export default {
     return fetch(`${API_LINK}posts/${id}`)
     .then(resp => resp.json())
   },
-  searchMovies: (term) =>{
+  searchPost: (term) =>{
     let reqObj = {
         method: 'POST',
         headers: {

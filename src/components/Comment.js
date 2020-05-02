@@ -114,7 +114,7 @@ class Comment extends Component {
       )
     }
   showComment = ()=>{
-    console.log(this.props.comment);
+    // console.log(this.props.comment);
     return (
       <div>
       <Link to={`/users/${this.props.comment.user.id}`}>{this.props.comment.user.username}</Link>
