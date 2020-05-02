@@ -21,6 +21,7 @@ class CommentsContainer extends Component {
   displayComments = () =>{
     const sortedComments = this.props.comments.sort((a, b) => this.sortComments(a,b))
     return sortedComments.map((comment)=>{
+      console.log(comment,"here")
       return <Comment key={comment.id} comment={comment}/>
     })
   }

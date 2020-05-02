@@ -36,7 +36,7 @@ class App extends Component {
         <Route exact path='/trending' component={PostsTrendingContainer}/>
         <Route exact path='/login' component={Login}/>
         <Route exact path='/register' component={Register}/>
-        <Route exact path='/post/:id' component={PostShowContainer}/>
+        <Route exact path='/posts/:id' component={PostShowContainer}/>
 
       </Switch>
       </div>

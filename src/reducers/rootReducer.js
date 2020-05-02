@@ -5,7 +5,7 @@ import postsReducer from './postsReducer';
 import usersReducer from './usersReducer';
 import pagesReducer from './pagesReducer';
 import maxPagesReducer from './maxPagesReducer';
-import movieReducer from './movieReducer';
+import postReducer from './postReducer';
 import commentsReducer from './commentsReducer';
 import ratingsReducer from './ratingsReducer';
 
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   user: usersReducer,
   page: pagesReducer,
   maxPages: maxPagesReducer,
-  movie: movieReducer,
+  post: postReducer,
   comments: commentsReducer,
   ratings: ratingsReducer,
 });

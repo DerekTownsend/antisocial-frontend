@@ -6,8 +6,8 @@ export default {
     return fetch(`${API_LINK}trending?page=${pageNumber}`)
     .then(resp => resp.json())
   },
-  fetchMovie: (id) => {
-    return fetch(`${API_LINK}movies/${id}`)
+  fetchPost: (id) => {
+    return fetch(`${API_LINK}posts/${id}`)
     .then(resp => resp.json())
   },
   searchMovies: (term) =>{
@@ -120,6 +120,53 @@ export default {
     return fetch(`${API_LINK}comment_dislikes/${id}`, reqObj)
       .then(resp => resp.json())
   },
+  favoriteComment: (bodyObj) =>{
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}comment_favorites`, reqObj)
+      .then(resp => resp.json())
+  },
+  unfavoriteComment: (id) =>{
+    const reqObj = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
+    }
+    return fetch(`${API_LINK}comment_favorites/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
+  editComment: (bodyObj, id) =>{
+    const reqObj = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+
+      },
+      body: JSON.stringify(bodyObj)
+    }
+    return fetch(`${API_LINK}comments/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
+  deleteComment: (id) =>{
+    const reqObj = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user")}`
+      },
+    }
+    return fetch(`${API_LINK}comments/${id}`, reqObj)
+      .then(resp => resp.json())
+  },
   createPost: (bodyObj) =>{
     const reqObj = {
       method: 'POST',
@@ -225,30 +272,6 @@ export default {
       },
     }
     return fetch(`${API_LINK}post_favorites/${id}`, reqObj)
-      .then(resp => resp.json())
-  },
-  editComment: (bodyObj, id) =>{
-    const reqObj = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem("user")}`
-
-      },
-      body: JSON.stringify(bodyObj)
-    }
-    return fetch(`${API_LINK}comments/${id}`, reqObj)
-      .then(resp => resp.json())
-  },
-  deleteComment: (id) =>{
-    const reqObj = {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem("user")}`
-      },
-    }
-    return fetch(`${API_LINK}comments/${id}`, reqObj)
       .then(resp => resp.json())
   },
   rateMovie: (bodyObj) =>{

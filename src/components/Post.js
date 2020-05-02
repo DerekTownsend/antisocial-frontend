@@ -101,7 +101,6 @@ class Post extends Component {
     }
 
     showFavButton = () =>{
-      console.log(this.props.post.post_favorites);
       return !this.props.post.post_favorites.find((post)=> post.user_id === this.props.user.id)  ? <button onClick={this.handleFavorite} className="favorite">Favorite <i className="far fa-heart"></i></button> : <button onClick={this.handleUnfavorite} className="unfavorite">Unfavorite <i className="fas fa-heart"></i></button>
     }
     showPost = ()=>{
@@ -113,6 +112,7 @@ class Post extends Component {
           {this.props.user.id ? this.showLikeButtons() : null}
           {this.props.user.id ? this.showFavButton() : null}
           {this.props.post.user.id === this.props.user.id ?  this.showEditDeleteButtons(): null}
+          <Link to={`/posts/${this.props.post.id}`}>See Comments</Link>
 
         </div>
       )
