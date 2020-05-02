@@ -5,8 +5,7 @@ import Api from '../services/api';
 
 class CommentEditForm extends Component {
   state = {
-    title: this.props.comment.title,
-    content: this.props.comment.content,
+    message: this.props.comment.message,
   }
 
   handleChange = (e) =>{
@@ -19,8 +18,7 @@ class CommentEditForm extends Component {
     e.preventDefault()
     const bodyObj = {
       comment: {
-        title: this.state.title,
-        content: this.state.content,
+        message: this.state.message,
       }
     }
     Api.editComment(bodyObj, this.props.comment.id)
@@ -33,8 +31,7 @@ class CommentEditForm extends Component {
   render(){
     return (
       <form onSubmit={this.handleSubmit} className="create_comment">
-        <input onChange={this.handleChange} id="title" name="title" value={this.state.title} placeholder="Title"/>
-        <textarea onChange={this.handleChange} id="content" name="content" value={this.state.content} rows="4" cols="50" placeholder="Comment">
+        <textarea onChange={this.handleChange} id="message" name="message" value={this.state.message} rows="4" cols="50" placeholder="Comment">
         </textarea>
         <input type="submit"/>
       </form>
@@ -44,7 +41,7 @@ class CommentEditForm extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    movie: state.movie
+    post: state.post
   }
 }
 

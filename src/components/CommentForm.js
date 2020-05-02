@@ -5,8 +5,7 @@ import Api from '../services/api';
 
 class CommentForm extends Component {
   state = {
-    title: "",
-    content: "",
+    message: "",
   }
 
   handleChange = (e) =>{
@@ -19,18 +18,16 @@ class CommentForm extends Component {
     e.preventDefault()
     const bodyObj = {
       comment: {
-        title: this.state.title,
-        content: this.state.content,
+        message: this.state.message,
         user_id: this.props.user.id,
-        movie_id: this.props.movie.id
+        post_id: this.props.post.id
       }
     }
     Api.createComment(bodyObj)
     .then(comment => {
       this.props.addComment(comment)
       this.setState({
-        title: "",
-        content: "",
+        message: "",
       })
     })
   }
@@ -38,8 +35,7 @@ class CommentForm extends Component {
   render(){
     return (
       <form onSubmit={this.handleSubmit} className="create_comment">
-        <input onChange={this.handleChange} id="title" name="title" value={this.state.title} placeholder="Title"/>
-        <textarea onChange={this.handleChange} id="content" name="content" value={this.state.content} rows="4" cols="50" placeholder="Comment">
+        <textarea onChange={this.handleChange} id="message" name="message" value={this.state.message} rows="4" cols="50" placeholder="Comment">
         </textarea>
         <input type="submit"/>
       </form>
@@ -49,7 +45,7 @@ class CommentForm extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    movie: state.movie
+    post: state.post
   }
 }
 

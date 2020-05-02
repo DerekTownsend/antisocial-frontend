@@ -1,4 +1,4 @@
-import {FETCH_POSTS, ADD_POST, EDIT_POST, DELETE_POST, LIKE_POST, UNLIKE_POST, DISLIKE_POST, UNDISLIKE_POST}  from '../actions/types'
+import {FETCH_POSTS, ADD_POST, EDIT_POST, DELETE_POST, LIKE_POST, UNLIKE_POST, DISLIKE_POST, UNDISLIKE_POST, FAVORITE_POST, UNFAVORITE_POST}  from '../actions/types'
 
 export default function postsReducer(state = [], action) {
   switch (action.type) {
@@ -10,6 +10,8 @@ export default function postsReducer(state = [], action) {
     case UNLIKE_POST:
     case DISLIKE_POST:
     case UNDISLIKE_POST:
+    case FAVORITE_POST:
+    case UNFAVORITE_POST:
     case EDIT_POST:
       const stateCopy = state.slice()
       const index = stateCopy.map((post) => { return post.id }).indexOf(action.post.id);

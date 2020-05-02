@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Api from '../services/api';
 import {connect} from 'react-redux'
-import { fetchPosts, deletePost, likePost, unlikePost, dislikePost, undislikePost, editPost } from '../actions'
+import { fetchPosts, deletePost, likePost, unlikePost, dislikePost, undislikePost, editPost, favoritePost, unfavoritePost } from '../actions'
 import PostEditForm from './PostEditForm'
 
 
@@ -72,6 +72,23 @@ class Post extends Component {
       .then(post => this.props.undislikePost(post.posts))
     }
 
+    handleFavorite = () => {
+      const bodyObj = {
+        post_favorite:{
+          user_id: this.props.user.id,
+          post_id: this.props.post.id
+        }
+      }
+      Api.favoritePost(bodyObj)
+      .then(post => this.props.favoritePost(post.posts))
+    }
+
+    handleUnfavorite = () => {
+      const myLike = this.props.post.post_favorites.find((favorite)=> favorite.user_id === this.props.user.id)
+      Api.unfavoritePost(myLike.id)
+      .then(post => this.props.unfavoritePost(post.posts))
+    }
+
     showLikeButtons = () =>{
       return (
         <div>
@@ -79,11 +96,13 @@ class Post extends Component {
         <p>{this.calculateLikesDislikes() }</p>
 
         {!this.props.post.post_dislikes.find((dislike)=> dislike.user_id === this.props.user.id)  ? <button onClick={this.handleDislike} className="dislike"><i className="far fa-thumbs-down"></i></button> : <button onClick={this.handleUndislike} className="undislike"><i className="fas fa-thumbs-down"></i></button>}
-
         </div>
       )
     }
 
+    showFavButton = () =>{
+      return !this.props.post.post_favorites.find((post)=> post.user_id === this.props.user.id)  ? <button onClick={this.handleFavorite} className="favorite">Favorite <i className="far fa-heart"></i></button> : <button onClick={this.handleUnfavorite} className="unfavorite">Unfavorite <i className="fas fa-heart"></i></button>
+    }
     showPost = ()=>{
       return (
         <div>
@@ -91,7 +110,9 @@ class Post extends Component {
           <h3>{this.props.post.title}</h3>
           <p>{this.props.post.message}</p>
           {this.props.user.id ? this.showLikeButtons() : null}
+          {this.props.user.id ? this.showFavButton() : null}
           {this.props.post.user.id === this.props.user.id ?  this.showEditDeleteButtons(): null}
+          <Link to={`/posts/${this.props.post.id}`}>See Comments</Link>
 
         </div>
       )
@@ -134,6 +155,12 @@ const mapDispatchToProps = dispatch => {
     },
     editPost: (post) => {
       dispatch(editPost(post))
+    },
+    favoritePost: (post) => {
+      dispatch(favoritePost(post))
+    },
+    unfavoritePost: (post) => {
+      dispatch(unfavoritePost(post))
     }
   }
 }

@@ -1,4 +1,4 @@
-import {FETCH_POSTS, ADD_POST, EDIT_POST, DELETE_POST, LIKE_POST, UNLIKE_POST, DISLIKE_POST, UNDISLIKE_POST, SET_PAGE, DECREMENT_PAGE, INCREMENT_PAGE, SET_PAGE_MAX, FIRST_PAGE, LAST_PAGE, SHOW_MOVIE, FETCH_USER, LOGOUT_USER, FETCH_COMMENTS, ADD_COMMENT, LIKE, UNLIKE, EDIT_COMMENT, DELETE_COMMENT, FETCH_RATINGS} from './types'
+import {FETCH_POSTS, ADD_POST, EDIT_POST, DELETE_POST, LIKE_POST, UNLIKE_POST, DISLIKE_POST, UNDISLIKE_POST, SET_PAGE, DECREMENT_PAGE, INCREMENT_PAGE, SET_PAGE_MAX, FIRST_PAGE, LAST_PAGE, SHOW_POST, FETCH_USER, LOGOUT_USER, FETCH_COMMENTS, ADD_COMMENT, LIKE_COMMENT, UNLIKE_COMMENT, DISLIKE_COMMENT, UNDISLIKE_COMMENT, FAVORITE_COMMENT, UNFAVORITE_COMMENT, EDIT_COMMENT, DELETE_COMMENT, FETCH_RATINGS, FAVORITE_POST, UNFAVORITE_POST} from './types'
 
 export function fetchPosts(posts) {
   return {
@@ -37,6 +37,18 @@ export function dislikePost(post) {
 export function undislikePost(post) {
   return {
     type: UNDISLIKE_POST,
+    post
+  }
+}
+export function favoritePost(post) {
+  return {
+    type: FAVORITE_POST,
+    post
+  }
+}
+export function unfavoritePost(post) {
+  return {
+    type: UNFAVORITE_POST,
     post
   }
 }
@@ -97,10 +109,10 @@ export function lastPage(pageNumber) {
   }
 }
 
-export function showMovie(movie) {
+export function showPost(post) {
   return {
-    type: SHOW_MOVIE,
-    movie
+    type: SHOW_POST,
+    post
   }
 }
 
@@ -131,17 +143,43 @@ export function addComment(comment) {
   }
 }
 
-export function likeComment(like) {
+export function likeComment(comment) {
   return {
-    type: LIKE,
-    like
+    type: LIKE_COMMENT,
+    comment
   }
 }
 
-export function unlikeComment(like) {
+export function unlikeComment(comment) {
   return {
-    type: UNLIKE,
-    like
+    type: UNLIKE_COMMENT,
+    comment
+  }
+}
+
+export function dislikeComment(comment) {
+  return {
+    type: DISLIKE_COMMENT,
+    comment
+  }
+}
+
+export function undislikeComment(comment) {
+  return {
+    type: UNDISLIKE_COMMENT,
+    comment
+  }
+}
+export function favoriteComment(comment) {
+  return {
+    type: FAVORITE_COMMENT,
+    comment
+  }
+}
+export function unfavoriteComment(comment) {
+  return {
+    type: UNFAVORITE_COMMENT,
+    comment
   }
 }
 
