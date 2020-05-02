@@ -26,7 +26,7 @@ class PostForm extends Component {
     }
     Api.createPost(bodyObj)
     .then(post => {
-      console.log(post);
+      // console.log(post);
       this.props.addPost(post.posts)
       this.setState({
         title: "",

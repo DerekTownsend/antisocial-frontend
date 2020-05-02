@@ -4,6 +4,7 @@ import './css/Form.css';
 import { Route, Switch } from 'react-router-dom';
 import {connect} from 'react-redux'
 import PostsTrendingContainer from './containers/PostsTrendingContainer'
+import PostsSearchContainer from './containers/PostsSearchContainer'
 import PostShowContainer from './containers/PostShowContainer'
 import PostForm from './components/PostForm'
 // import MovieShowContainer from './containers/MovieShowContainer'
@@ -36,6 +37,7 @@ class App extends Component {
         <Route exact path='/trending' component={PostsTrendingContainer}/>
         <Route exact path='/login' component={Login}/>
         <Route exact path='/register' component={Register}/>
+        <Route exact path='/posts/search/:term/:page' component={PostsSearchContainer}/>
         <Route exact path='/posts/:id' component={PostShowContainer}/>
 
       </Switch>

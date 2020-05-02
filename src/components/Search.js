@@ -27,11 +27,11 @@ class Search extends Component {
     if (this.state.term !==  "" && this.state.term !== " " ) {
       this.props.setPage(1)
       // console.log(this.props);
-      Api.searchMovies({term: this.state.term, page: this.props.page})
-      .then( movies => {
-        this.props.fetchPosts(movies.movies)
-        this.props.setPageMax(Math.ceil(movies.total/24))
-        this.props.history.push(`/movies/search/${this.state.term}/1`)
+      Api.searchPost({term: this.state.term, page: this.props.page})
+      .then( posts => {
+        this.props.fetchPosts(posts.posts)
+        this.props.setPageMax(Math.ceil(posts.total/24))
+        this.props.history.push(`/posts/search/${this.state.term}/1`)
       })
     }
   }
@@ -53,8 +53,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchPosts: (movies) => {
-      dispatch(fetchPosts(movies))
+    fetchPosts: (posts) => {
+      dispatch(fetchPosts(posts))
     },
     setPageMax: (pageNumber) => {
       dispatch(setPageMax(pageNumber))
